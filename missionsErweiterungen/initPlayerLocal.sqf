@@ -16,6 +16,7 @@ if (RR_commons_viewdistance) then {
 };
 
 
+
 /* ACRE */
 if (isNil "RR_commons_acre_babel_bluforLanguage") 	then {RR_commons_acre_babel_bluforLanguage = "BLUFOR-Sprache"};
 if (isNil "RR_commons_acre_babel_redforLanguage") 	then {RR_commons_acre_babel_redforLanguage = "REDFOR-Sprache"};
@@ -74,12 +75,13 @@ if (isMultiplayer) then {
 };
 
 
+
+
 /* Persistence */
 if (RR_commons_persistence) then {
 	if (isNil "RR_commons_persistence_customSaveFunction") then {RR_commons_persistence_customSaveFunction = ""};
 	if (isNil "RR_commons_persistence_customLoadFunction") then {RR_commons_persistence_customLoadFunction = ""};
 };
-
 
 /* Master PFH */
 [{
@@ -97,7 +99,3 @@ if (RR_commons_persistence) then {
 	};
 	clearRadio
 }, 0] call CBA_fnc_addPerFrameHandler;
-
-
-/* hide side specific map markers */
-[] call RR_commons_sideMarkers_fnc_hideMarkers;
