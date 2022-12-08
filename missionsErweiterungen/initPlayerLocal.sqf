@@ -15,8 +15,6 @@ if (RR_commons_viewdistance) then {
 	private _vdActionID = player addAction["<t color='#FF0000'>Sichtweite</t>",RR_commons_dynamicViewDistance_fnc_openDialog,[],-99,false,false,"",''];
 };
 
-
-
 /* ACRE */
 if (isNil "RR_commons_acre_babel_bluforLanguage") 	then {RR_commons_acre_babel_bluforLanguage = "BLUFOR-Sprache"};
 if (isNil "RR_commons_acre_babel_redforLanguage") 	then {RR_commons_acre_babel_redforLanguage = "REDFOR-Sprache"};
@@ -24,7 +22,6 @@ if (isNil "RR_commons_acre_babel_greenforLanguage") then {RR_commons_acre_babel_
 if (isNil "RR_commons_acre_babel_civilLanguage") 	then {RR_commons_acre_babel_civilLanguage = "ZIVIL-Sprache"};
 call RR_commons_acre_fnc_babelSetup;
 call RR_commons_acre_fnc_autoRadios;
-
 
 /* Teleporter */
 RR_commons_teleport_canTeleport  = true;
@@ -39,18 +36,15 @@ if (RR_commons_teleport) then {
 	};
 };
 
-
 /* Init Blackscreen */
 if (isNil "RR_commons_initBlackScreen_time") then {RR_commons_initBlackScreen_time = 12};
 if (isNil "RR_commons_initBlackScreen_text") then {RR_commons_initBlackScreen_text = "Mission wird initialisiert"};
 if (RR_commons_initBlackScreen) then {[] spawn RR_commons_initBlackScreen_fnc_initBlackScreen};
 
-
 /* Artilleriecomputer */
 if !(RR_commons_artilleryComp) then {
 	enableEngineArtillery false; 
 };
-
 
 /* Zonerestriction */
 if (isNil "RR_commons_zoneRestriction_warningTime") then {RR_commons_zoneRestriction_warningTime = 10};
@@ -64,7 +58,6 @@ RR_commons_zoneRestriction_triggers 	= RR_commons_zoneRestriction_triggers   	ap
 RR_commons_zoneRestriction_excludeArray = RR_commons_zoneRestriction_excludeArray   apply {call compile _x};
 RR_commons_lastVDChange = 0;
 
-
 /* Anti Cheat */
 if (isMultiplayer) then {
 	[] spawn {
@@ -73,9 +66,6 @@ if (isMultiplayer) then {
 		call RR_commons_antiCheat_fnc_clientSendInfoToServer;
 	};
 };
-
-
-
 
 /* Persistence */
 if (RR_commons_persistence) then {
@@ -99,3 +89,6 @@ if (RR_commons_persistence) then {
 	};
 	clearRadio
 }, 0] call CBA_fnc_addPerFrameHandler;
+
+/* Anti Negligent Discharge */
+[] spawn RR_commons_antiND_fnc_antiNDLocalEH;

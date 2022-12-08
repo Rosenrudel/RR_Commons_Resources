@@ -20,6 +20,10 @@ DEC(core,infoText)
 DEC(core,parse3denArray)
 DEC(core,parseAnyControlType)
 
+/* Mission time tracker */
+DEC(core,trackMissionTime)
+DEC(core,getMissionTime)
+
 
 // D Y N A M I C  V I E W D I S T A N C E
 /* Dynamic TerrainGrid */
@@ -134,3 +138,7 @@ DEC(antiCheat,clientSendInfoToServer)
 DEC(antiCheat,initWhiteList)
 DEC(antiCheat,onDifferenceDetection)
 DEC(antiCheat,serverReceiveStringFromClient)
+
+/* Anti Negligent Discharge */
+DEC(antiND,antiNDLocalEH)
+DEC(antiND,safeStart)
