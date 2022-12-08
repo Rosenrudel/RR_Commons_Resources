@@ -11,6 +11,7 @@ if (RR_commons_persistence) then {
 	};
 	[RR_commons_persistence_Token, RR_commons_persistence_campaignName] call RR_commons_persistence_fnc_initSession;
 };
+
 /* HABO */
 if (isNil "RR_commons_habo_3denArray") then {
 	RR_commons_habo_3denArray = []
@@ -21,13 +22,21 @@ if (isNil "RR_commons_habo_3denArray") then {
 		_x call RR_commons_habo_fnc_registerGroups;
 	} forEach RR_commons_habo_3denArray;
 };
+
 /* buildPop */
 [] spawn {
 	waitUntil {sleep 0.1; time > 0.2};
 	call RR_commons_buildPop_fnc_init3denTriggers;
 };
 
+/* Mission time tracker */
+[] spawn {
+	sleep 0.1;
+	call RR_commons_core_fnc_trackMissionTime;
+};
 
+/* Anti-ND */
+remoteExecCall [RR_commons_antiND_fnc_safeStart, 2, false];
 
 /* AntiCheat */
 /*
