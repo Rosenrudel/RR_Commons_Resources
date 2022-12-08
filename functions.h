@@ -20,15 +20,12 @@ DEC(core,infoText)
 DEC(core,parse3denArray)
 DEC(core,parseAnyControlType)
 
-
 // D Y N A M I C  V I E W D I S T A N C E
 /* Dynamic TerrainGrid */
 DEC(dynamicViewDistance,handleTerrainGrid)
 DEC(dynamicViewDistance,checkForceList)
 DEC(dynamicViewDistance,openDialog)
 DEC(dynamicViewDistance,updateViewdistance)
-
-
 
 // A C R E
 /* ACRE Init */
@@ -39,8 +36,6 @@ DEC(acre,babelSetup)
 
 /* ACRE Funkgerätvergabe */
 DEC(acre,autoRadios)
-
-
 
 // T E L E P O R T
 /* Teleportdialog öffnen */
@@ -55,13 +50,10 @@ DEC(teleport,addAction)
 /* Fügt die Aktion für JIPler hinzu */
 DEC(teleport,addActionJIP)
 
-
-
-// InitBlackScreen
+/* InitBlackScreen */
 DEC(initBlackScreen,initBlackScreen)
 
-
-// EasySpawn
+/* EasySpawn */
 DEC(easySpawn,extractCrewInfo)
 DEC(easySpawn,extractUnitInfo)
 DEC(easySpawn,getTemplateData)
@@ -70,8 +62,7 @@ DEC(easySpawn,spawnGroup)
 DEC(easySpawn,spawnUnit)
 DEC(easySpawn,spawnVehicle)
 
-
-// PvPGameMode
+/* PvPGameMode */
 DEC(pvp,claimTargetObject)
 DEC(pvp,clientTracking)
 DEC(pvp,getSideColor)
@@ -80,12 +71,8 @@ DEC(pvp,initTargetObject)
 DEC(pvp,serverLoop)
 DEC(pvp,serverLoopInit)
 
-
 /* Zone Restriction */
 DEC(zoneRestriction,main)
-
-
-
 
 /* HABO - Help A Brother Out */
 DEC(habo,addGroupToMetaGroup)
@@ -113,13 +100,10 @@ DEC(habo,setMetaGroupMaxDistance)
 DEC(habo,setMetaGroupType)
 DEC(habo,updateMetaGroupState)
 
-
 /* Buildpop - Building Population */
 DEC(buildPop,init3denTriggers)
 DEC(buildPop,initBuildPopTrigger)
 DEC(buildPop,populateBuilding)
-
-
 
 /* Module functions */
 DEC(modules,easySpawnSetGroupTemplate)
@@ -127,10 +111,11 @@ DEC(modules,easySpawnSpawnGroup)
 DEC(modules,haboRegisterGroups)
 DEC(modules,buildPopModuleInit)
 
-
-
 /* Anticheat */
 DEC(antiCheat,clientSendInfoToServer)
 DEC(antiCheat,initWhiteList)
 DEC(antiCheat,onDifferenceDetection)
 DEC(antiCheat,serverReceiveStringFromClient)
+
+/* sideMarkers - side senitive map marker hiding */
+DEC(sideMarkers,hideMarkers)
