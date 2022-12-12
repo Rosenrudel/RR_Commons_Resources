@@ -134,3 +134,11 @@ DEC(antiCheat,clientSendInfoToServer)
 DEC(antiCheat,initWhiteList)
 DEC(antiCheat,onDifferenceDetection)
 DEC(antiCheat,serverReceiveStringFromClient)
+
+/* unitTracker */
+DEC(core,unitTracker)
+DEC(core,unitSpawnedLocal)
+
+/* corpseHandler */
+DEC(corpseHandler,corpseHandler)
+DEC(corpseHandler,initDisconnectEH)

@@ -27,7 +27,11 @@ if (isNil "RR_commons_habo_3denArray") then {
 	call RR_commons_buildPop_fnc_init3denTriggers;
 };
 
+/* unitTracker */
+[] spawn RR_commons_core_fnc_unitTracker;
 
+/* corpseHandler */
+[] spawn RR_commons_corpseHandler_fnc_initDisconnectEH
 
 /* AntiCheat */
 /*
