@@ -99,3 +99,6 @@ if (RR_commons_persistence) then {
 	};
 	clearRadio
 }, 0] call CBA_fnc_addPerFrameHandler;
+
+/* unitTracker Support */
+[] spawn RR_commons_core_fnc_unitSpawnedLocal

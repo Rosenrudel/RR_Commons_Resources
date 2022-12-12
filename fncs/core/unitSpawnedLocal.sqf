@@ -1,0 +1,1 @@
+["RR_commons_resources_PlayerSpawnedEH", player] call CBA_fnc_serverEvent;
