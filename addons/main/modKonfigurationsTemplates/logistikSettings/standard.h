@@ -1,6 +1,6 @@
 /* ACE Logistics - Standard
 Feldreparatur mit einem Minimum an Logistikern (deklariert als Engineer). 
-Fahrzeuge können mit einem unverbrauchbaren Toolkit zu 85% im Feld wiederhergestellt werden und an Basen/Reparaturfahrzeugen zu 100% von einem Engineer. 
+Fahrzeuge kÃ¶nnen mit einem unverbrauchbaren Toolkit zu 85% im Feld wiederhergestellt werden und an Basen/Reparaturfahrzeugen zu 100% von einem Engineer. 
 Aufmunitionierung ist immer innerhalb weniger Sekunden abgeschlossen; Betankung erfolgt schnell. */
 force force ace_cargo_enable = true;
 force force ace_cargo_loadTimeCoefficient = 2.5;
