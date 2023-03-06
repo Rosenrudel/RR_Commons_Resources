@@ -1,9 +1,18 @@
 1.0.0
+- Neu: Option, dass tödliche Wunden unter Hardcore nicht töten
+- Neu: KAT hinzugefügt
+- Geändert: KAT Pneumothorax muss nun mit Stethoskop gefunden werden
+- Geändert: In Hardcore können nun alle Spieler Epi-Pens benutzten
+- Geändert: Build tooling zu hemtt migriert
+- Geändert: Rudeleye Effekte ab gestellt
+- Entfernt: Ironpackplus
 
 0.98
+16.02.2021
 Neu: Editor-Module für easySpawn, HABO und buildPop, zu finden unter der "RosenRudel Mission Tools" Kategorie.
 
 0.95
+12.02.2021
 Neu: BuildPop nimmt nun EasySpawn Gruppen als Einheitenpool an!
 Neu: EasySpawn erlaubt es nun, Gruppen ohne ihre Fahrzeuge zu spawnen (Crewmitglieder werden weiterhin gespawned!)
 Fixed: Füttert man EasySpawn zweimal denselben Template-Namen, wird das vorherige Template überschrieben
