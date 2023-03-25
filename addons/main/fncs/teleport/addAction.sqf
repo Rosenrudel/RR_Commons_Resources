@@ -14,10 +14,10 @@
 *	Example: 
 *   call RR_commons_teleport_fnc_addAction
 * =================================================*/
+params["_teleporterObjects"];
 
-private ["_needsAction"];
 private _teleporter = objNull;
-RR_commons_teleport_teleporterObjects select {
+_teleporterObjects select {
 	_teleporter = _x;
 	if (typeName _teleporter == "STRING") then {_teleporter = call compile _teleporter};
 	if (_teleporter getVariable ["RR_commons_teleport_needsAction",true]) then {

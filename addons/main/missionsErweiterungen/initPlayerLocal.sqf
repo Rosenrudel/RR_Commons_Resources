@@ -1,68 +1,73 @@
 /* Sichtweiten Kram */
-if (isNil "RR_commons_viewdistance") then {RR_commons_viewdistance = false};
-if (isNil "RR_commons_viewDistance_min") then {RR_commons_viewDistance_min = viewDistance};
-if (isNil "RR_commons_viewDistance_max") then {RR_commons_viewDistance_max = (viewDistance * 2)};
-RR_commons_dynamicViewdistance_groundViewdistance = RR_commons_viewDistance_min;
-RR_commons_dynamicViewdistance_airViewDistance    = RR_commons_viewDistance_max;
-RR_commons_dynamicViewdistance_nextCheck    	  = 0;
-if (isNil "RR_commons_dynamicViewdistance_heightThreshold") then {RR_commons_dynamicViewdistance_heightThreshold = 20};
-RR_commons_dynamicViewdistance_overrideOVD = false;
-RR_commons_dynamicViewdistance_keepRatio = true;
-RR_commons_dynamicViewdistance_groundOVD = getObjectViewDistance param [0];
-RR_commons_dynamicViewdistance_airOVD = getObjectViewDistance param [0];
-RR_commons_dynamicViewdistance_firstTime = true;
-if (RR_commons_viewdistance) then {
-	private _vdActionID = player addAction["<t color='#FF0000'>Sichtweite</t>",RR_commons_dynamicViewDistance_fnc_openDialog,[],-99,false,false,"",''];
-};
-
+[
+	RR_commons_viewdistance,
+	RR_commons_viewDistance_min,
+	RR_commons_viewDistance_max,
+	RR_commons_dynamicViewdistance_heightThreshold,
+	RR_commons_dynamicViewdistance
+] call RR_commons_dynamicViewDistance_fnc_initDynamicViewDistance;
 
 
 /* ACRE */
-if (isNil "RR_commons_acre_babel_bluforLanguage") 	then {RR_commons_acre_babel_bluforLanguage = "BLUFOR-Sprache"};
-if (isNil "RR_commons_acre_babel_redforLanguage") 	then {RR_commons_acre_babel_redforLanguage = "REDFOR-Sprache"};
-if (isNil "RR_commons_acre_babel_greenforLanguage") then {RR_commons_acre_babel_greenforLanguage = "GREENFOR-Sprache"};
-if (isNil "RR_commons_acre_babel_civilLanguage") 	then {RR_commons_acre_babel_civilLanguage = "ZIVIL-Sprache"};
-call RR_commons_acre_fnc_babelSetup;
-call RR_commons_acre_fnc_autoRadios;
+[
+	RR_commons_acre_babel,
+	RR_commons_acre_babel_bluforLanguage,
+	RR_commons_acre_babel_redforLanguage,
+	RR_commons_acre_babel_greenforLanguage,
+	RR_commons_acre_babel_civilLanguage,
+	RR_commons_feature_acre_babel_bluforLanguageTranslators,
+	RR_commons_feature_acre_babel_redforLanguageTranslators,
+	RR_commons_feature_acre_babel_greenforLanguageTranslators,
+	RR_commons_feature_acre_babel_civilLanguageTranslators    
+] call RR_commons_acre_fnc_babelSetup;
+
+[
+	RR_commons_acre_autoRadios,
+	RR_commons_acre_autoRadios_includeCivilians,
+	RR_commons_acre_autoRadios_148ForGroupLeaders,
+	RR_commons_acre_autoRadios_117ForAboveLieutenant,
+	RR_commons_acre_autoRadios_unitsWith148,
+	RR_commons_acre_autoRadios_unitsWith117 
+]call RR_commons_acre_fnc_autoRadios;
 
 
 /* Teleporter */
-RR_commons_teleport_canTeleport  = true;
-if (RR_commons_teleport) then {
-	call RR_commons_teleport_fnc_addAction;
-	
-	[] spawn {
-		waitUntil {!isNull player};
-		if (RR_commons_teleportJIP && didJIP) then {
-			call RR_commons_teleport_fnc_addActionJIP;
-		};
-	};
-};
+[
+	RR_commons_teleport,
+	RR_commons_teleport_allowTeleportToAI,
+	RR_commons_teleportJIP,
+	RR_commons_teleport_teleporterObjects
+] call RR_commons_teleport_fnc_initTeleport;
 
 
 /* Init Blackscreen */
-if (isNil "RR_commons_initBlackScreen_time") then {RR_commons_initBlackScreen_time = 12};
-if (isNil "RR_commons_initBlackScreen_text") then {RR_commons_initBlackScreen_text = "Mission wird initialisiert"};
-if (RR_commons_initBlackScreen) then {[] spawn RR_commons_initBlackScreen_fnc_initBlackScreen};
+[
+	RR_commons_initBlackScreen,
+	RR_commons_initBlackScreen_allowForJIP,
+	RR_commons_initBlackScreen_allowForSP,
+	RR_commons_initBlackScreen_time,
+	RR_commons_initBlackScreen_text
+] spawn RR_commons_initBlackScreen_fnc_initBlackScreen;
 
 
 /* Artilleriecomputer */
-if !(RR_commons_artilleryComp) then {
+[RR_commons_artilleryComp] params [["_artilleryComp", false, [true]]];
+if !(_artilleryComp) then {
 	enableEngineArtillery false; 
 };
 
 
 /* Zonerestriction */
-if (isNil "RR_commons_zoneRestriction_warningTime") then {RR_commons_zoneRestriction_warningTime = 10};
-if (isNil "RR_commons_zoneRestriction_mode") then {RR_commons_zoneRestriction_mode = 0};
-if (isNil "RR_commons_zoneRestriction_text") then {RR_commons_zoneRestriction_text = "Achtung! Kehre in den Spielbereich zurück!"};
-RR_commons_zoneRestriction_canBeWarned = true;
-RR_commons_zoneRestriction_killTime = 0;
-RR_commons_zoneRestriction_nextCheck = 0;
-RR_commons_zoneRestriction_lastWarning = -3;
-RR_commons_zoneRestriction_triggers 	= RR_commons_zoneRestriction_triggers   	apply {call compile _x};
-RR_commons_zoneRestriction_excludeArray = RR_commons_zoneRestriction_excludeArray   apply {call compile _x};
-RR_commons_lastVDChange = 0;
+[
+	RR_commons_zoneRestriction,
+	RR_commons_zoneRestriction_invert,
+	RR_commons_zoneRestriction_disableAir,
+	RR_commons_zoneRestriction_warningTime,
+	RR_commons_zoneRestriction_mode,
+	RR_commons_zoneRestriction_text,
+	RR_commons_zoneRestriction_triggers,
+	RR_commons_zoneRestriction_excludeArray
+] call RR_commons_zoneRestriction_fnc_initZoneRestriction;
 
 
 /* Anti Cheat */

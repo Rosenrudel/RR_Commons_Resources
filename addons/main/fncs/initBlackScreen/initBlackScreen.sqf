@@ -6,18 +6,30 @@
 *	captive, verhindert Sound.
 *
 *	Params:
-*	0 - Position
+*	0 - Enable <BOOL>
+*	1 - Enable for JIP <BOOL>
+*	2 - Enable for SP <BOOL>
+*	3 - Screen Time <Number>
+*	4 - Screen Text <STRING>
 *
 *	Returns:
-*	Ob sich die Position in einem zu prüfenden Bereich befindet [BOOL]
+*	nil
 *
-*	Example: 
-*   [getPos player] call RR_commons_dynamicViewdistance_fnc_checkForceList
 * =================================================*/
 
+params[
+	["_blackScreen_enable", false, [true]],
+	["_allowForJIP", true, [true]],
+	["_allowForSP", false, [true]],
+	["_screenTime", 12, [12]],
+	["_screenText", "Mission wird initialisiert", [""]]
+];
+
+if (!_blackScreen_enable) exitWith {};
+
 /* Init stuff */
-if (didJIP && !(RR_commons_initBlackScreen_allowForJIP)) exitWith {};
-if ((!isMultiplayer) && (!RR_commons_initBlackScreen_allowForSP)) exitWith {};
+if (didJIP && !(_allowForJIP)) exitWith {};
+if ((!isMultiplayer) && (!_allowForSP)) exitWith {};
 private ["_fuel","_playerVehicle"];
 waitUntil {time > 0};
 private _wasCaptive = captive player;
@@ -39,12 +51,12 @@ player setCaptive true;
 [0] call acre_api_fnc_setGlobalVolume;
 ace_hearing_disableVolumeUpdate = true; 
 0 fadeSound 0;
-cutText [RR_commons_initBlackScreen_text, "BLACK OUT",0.001];
+cutText [_screenText, "BLACK OUT",0.001];
 
-sleep RR_commons_initBlackScreen_time;
+sleep _screenTime;
 
 /* Fade in, set values again */
-cutText [RR_commons_initBlackScreen_text, "BLACK IN",5];
+cutText [_screenText, "BLACK IN",5];
 
 if (_isInVehicle) then {
 	if (local _playerVehicle) then {
