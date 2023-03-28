@@ -6,6 +6,7 @@
 - Geändert: Build tooling zu hemtt migriert
 - Geändert: Rudeleye Effekte ab gestellt
 - Entfernt: Ironpackplus
+- Fixed: Default-Werte im Missionsframework
 
 0.98
 16.02.2021
