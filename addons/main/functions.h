@@ -23,6 +23,7 @@ DEC(core,parseAnyControlType)
 
 // D Y N A M I C  V I E W D I S T A N C E
 /* Dynamic TerrainGrid */
+DEC(dynamicViewDistance,initDynamicViewDistance)
 DEC(dynamicViewDistance,handleTerrainGrid)
 DEC(dynamicViewDistance,checkForceList)
 DEC(dynamicViewDistance,openDialog)
@@ -43,6 +44,8 @@ DEC(acre,autoRadios)
 
 
 // T E L E P O R T
+DEC(teleport,initTeleport)
+
 /* Teleportdialog �ffnen */
 DEC(teleport,openDialog)
 
@@ -82,6 +85,7 @@ DEC(pvp,serverLoopInit)
 
 
 /* Zone Restriction */
+DEC(zoneRestriction,initZoneRestriction)
 DEC(zoneRestriction,main)
 
 

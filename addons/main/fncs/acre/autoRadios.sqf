@@ -5,7 +5,12 @@
 *   Vergibt Funkgeräte zu Missionsstart an Spieler. 
 *
 *	Params:
-*	None
+*	0 - Auto radios enable <BOOL>
+*	1 - Include Civilians? <BOOL>
+*	2 - Enable 148 for group leaders <BOOL>
+*	3 - Enable 117 for units above lieutenant <BOOL>
+*	4 - Units with 148 <[STRING]>
+*	5 - Units with 117 <[STRING]>
 *
 *	Returns:
 *	Nil
@@ -13,17 +18,27 @@
 *	Example: 
 *   call RR_commons_acre_fnc_autoRadios
 * =================================================*/
-if (RR_commons_acre_autoRadios) then {
-	if ((side player == civilian) && {!RR_commons_acre_autoRadios_includeCivilians}) exitWith {};
+
+params[
+	["_autoRadios_enable", false, [true]],
+	["_includeCivilians", true, [true]],
+	["_148ForGroupLeaders", true, [true]],
+	["_117ForAboveLieutenant", true, [true]],
+	["_unitsWith148", [], [[""]]],
+	["_unitsWith117", [], [[""]]]
+];
+
+if (_autoRadios_enable) then {
+	if ((side player == civilian) && {!_includeCivilians}) exitWith {};
 	private _has148  = false;
 	private _has117F = false;
 
 	/* Füge 148er zu Gruppenleitern und 117F zu Einheiten mit einem Rang ab "Captain" hinzu */
-	if (RR_commons_acre_autoRadios_148ForGroupLeaders && {player == (leader (group player))}) then {
+	if (_148ForGroupLeaders && {player == (leader (group player))}) then {
 		player addItem "ACRE_PRC148";
 		_has148 = true;
 	};
-	if (RR_commons_acre_autoRadios_117ForAboveLieutenant && {[player] call RR_commons_core_fnc_isLeader}) then {
+	if (_117ForAboveLieutenant && {[player] call RR_commons_core_fnc_isLeader}) then {
 		player addItem "ACRE_PRC117F";
 		_has117F = true;
 	};
@@ -31,7 +46,7 @@ if (RR_commons_acre_autoRadios) then {
 	
 	private _148Array = [];
 	private _117Array = [];
-	RR_commons_acre_autoRadios_unitsWith148 select {
+	_unitsWith148 select {
 		private _unit = _x;
 		if (typeName _unit == "STRING") then {
 			_unit = call compile _unit;
@@ -39,7 +54,7 @@ if (RR_commons_acre_autoRadios) then {
 		_148Array pushBack _unit;
 		true;
 	};
-	RR_commons_acre_autoRadios_unitsWith117 select {
+	_unitsWith117 select {
 		private _unit = _x;
 		if (typeName _unit == "STRING") then {
 			_unit = call compile _unit;
