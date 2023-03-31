@@ -34,7 +34,7 @@ private ["_fuel","_playerVehicle"];
 waitUntil {time > 0};
 private _wasCaptive = captive player;
 private _preventFromFiringAction = player addAction ["", {},nil,0,false,true,"defaultAction"];
-private _isInVehicle = (vehicle player == player);
+private _isInVehicle = (vehicle player != player);
 
 if (_isInVehicle) then {
 	_playerVehicle = (vehicle player);
