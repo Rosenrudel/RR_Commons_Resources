@@ -51,12 +51,12 @@ player setCaptive true;
 [0] call acre_api_fnc_setGlobalVolume;
 ace_hearing_disableVolumeUpdate = true; 
 0 fadeSound 0;
-cutText [_screenText, "BLACK OUT",0.001];
+"blackscreen" cutText [_screenText, "BLACK OUT",0.001];
 
 sleep _screenTime;
 
 /* Fade in, set values again */
-cutText [_screenText, "BLACK IN",5];
+"blackscreen" cutText [_screenText, "BLACK IN",5];
 
 if (_isInVehicle) then {
 	if (local _playerVehicle) then {
