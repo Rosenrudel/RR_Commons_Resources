@@ -84,8 +84,10 @@ if (isMultiplayer) then {
 
 /* Persistence */
 if (RR_commons_persistence) then {
+	if (isNil "RR_commons_persistence_baseTrigger") then {RR_commons_persistence_baseTrigger = []};
 	if (isNil "RR_commons_persistence_customSaveFunction") then {RR_commons_persistence_customSaveFunction = ""};
 	if (isNil "RR_commons_persistence_customLoadFunction") then {RR_commons_persistence_customLoadFunction = ""};
+	if (isNil "RR_commons_persisRR_commons_persistence_disablePositionLoadingtence_baseTrigger") then {RR_commons_persistence_disablePositionLoading = false};
 };
 
 /* Master PFH */
