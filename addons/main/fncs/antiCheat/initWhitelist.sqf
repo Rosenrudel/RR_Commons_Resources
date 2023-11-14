@@ -22,7 +22,11 @@ RR_commons_antiCheat_clientPatchesWhitelist = [
 	/* VN */
 	"vn_emm",
 	"vn_emm_main_menu",
-	"vn_emm_multiplayer_menu"
-	
+	"vn_emm_multiplayer_menu",
 
+	/* OCAP */
+	"OCAP_main",
+	"OCAP",
+	"OCAP_extension",
+	"OCAP_recorder"
 ];
